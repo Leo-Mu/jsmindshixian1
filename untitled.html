@@ -11,7 +11,7 @@
 <div id="jsmind_container" style="height: 778px; width: 1500px;"></div>
 </body>
 <script type="text/javascript">
-	function display(data){
+	function display(){
 		var options = {
 			container:'jsmind_container',
 			editable:false,
@@ -20,19 +20,58 @@
 
 		var jm = new jsMind(options);
 		// 让 jm 显示这个 mind 即可
-		jm.show(mind); 
+		jm.show(mind);
 	}
-    function addclick(){
+  function addclick(){
 		var i = 0;
 		while(document.getElementsByTagName("jmnode")[i]){
-			document.getElementsByTagName("jmnode")[i].setAttribute('onclick',"changeDisplay(mind)");
+			document.getElementsByTagName("jmnode")[i].setAttribute('onclick',"changeDisplay(this)");
 			i++;
 		}
 	}
-	function changeDisplay(data){
-		console.log("changeDisplay called");
+	function changeDisplay(element){
+		var nodeid = element.attributes["nodeid"].value;
+		console.log("changeDisplay called" + ' ' +nodeid);
+		if(nodeid == 'root')return;
+		var node = searchInMind(nodeid);
+		console.log(node['id'] + ' ' + node['topic']);
+		moveData(node);
+		var change = document.getElementById('jsmind_container');
+		var futher = change.parentNode;
+		futher.removeChild(change);
+		var changed = document.createElement("div");
+		futher.appendChild(changed);
+		var newElement = futher.getElementsByTagName("div")[0];
+		newElement.setAttribute('id',"jsmind_container");
+		newElement.setAttribute('style',"height: 778px; width: 1500px;");
+		display();
 	}
-	//上面是函数，下面是数据
+	function moveData(node){
+		mind['data'] = node;
+	}
+	function searchInMind(nodeid){
+		var scroe = mind["data"]["children"];
+		return searchInBranch(scroe,nodeid);
+	}
+	function searchInBranch(nodeArry, nodeid){
+		/*
+		for (var i in nodeArry) {
+			if(nodeArry[i]['id'] == nodeid)return nodeArry[i];
+			if (nodeArry[i]['children']){
+				var node = searchInBranch(nodeArry[i]['children'],nodeid);
+				if(node)return node;
+			}
+		}
+		*/
+		for (var i = 0; i < nodeArry.length; i++) {
+			if(nodeArry[i]['id'] == nodeid)return nodeArry[i];
+			if (nodeArry[i]['children']){
+				var node = searchInBranch(nodeArry[i]['children'],nodeid);
+				if(node)return node;
+			}
+		}
+	}
+	//上面是函数，下面是树对象数据
     var mind = {
 		/* 元数据，定义思维导图的名称、作者、版本等信息 */
 		"meta":{
@@ -65,8 +104,8 @@
 			]}
 		]}
 	};
-	//上面是数据，下面是要执行的n具体操作
-	display(mind);
+	//上面是数据，下面是要执行的具体操作
+	display();
 	addclick();
 </script>
 </html>
