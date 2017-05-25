@@ -1,29 +1,26 @@
 var mind = {
 "meta":{
-  "name":"jsMind-demo-tree",
-  "author":"hizzgdev@163.com",
-  "version":"0.2"
+  "name":"高中生物思维导图",
+  "author":"mutou.leo.wood@foxmail.com",
+  "version":"0.0.1"
 },
 "format":"node_tree",
-"data":{"id":"root","topic":"jsMind","children":[
-  {"id":"easy","topic":"Easy","direction":"left","expanded":false,"children":[
-    {"id":"easy1","topic":"Easy to show"},
-    {"id":"easy2","topic":"Easy to edit"},
-    {"id":"easy3","topic":"Easy to store"},
-    {"id":"easy4","topic":"Easy to embed"}
+"data":{"id":"cell","topic":"细胞","children":[
+  {"id":"composition","topic":"组成","children":[
+    {"id":"chemistry","topic":"化学组成","children":[
+      {"id":"element","topic":"元素"},
+      {"id":"compound","topic":"化合物"}
+    ]},
+    {"id":"structure&function","topic":"结构与功能","children":[
+      {"id":"nucleus","topic":"细胞核"},
+      {"id":"cytoplasm","topic":"细胞质"},
+      {"id":"cytomembrane","topic":"细胞膜"},
+      {"id":"wall","topic":"细胞壁"}
+    ]},
   ]},
-  {"id":"open","topic":"Open Source","direction":"right","expanded":true,"children":[
-    {"id":"open1","topic":"on GitHub"},
-    {"id":"open2","topic":"BSD License"}
-  ]},
-  {"id":"powerful","topic":"Powerful","direction":"right","children":[
-    {"id":"powerful1","topic":"Base on Javascript"},
-    {"id":"powerful2","topic":"Base on HTML5"},
-    {"id":"powerful3","topic":"Depends on you"}
-  ]},
-  {"id":"other","topic":"test node","direction":"left","children":[
-    {"id":"other1","topic":"I'm from local variable"},
-    {"id":"other2","topic":"I can do everything"}
+  {"id":"metabolize","topic":"代谢","children":[
+    {"id":"base","topic":"基础"},
+    {"id":"way","topic":"方式"}
   ]}
 ]}
 }
