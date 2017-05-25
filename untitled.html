@@ -3,6 +3,7 @@
 <head>
 <link type="text/css" rel="stylesheet" href="style/jsmind.css" />
 <script type="text/javascript" src="js/jsmind.js"></script>
+<script type="text/javascript" src="data.json"></script>
 <meta charset="utf-8">
 <title>无标题文档</title>
 </head>
@@ -72,16 +73,18 @@
 		}
 	}
 	//上面是函数，下面是树对象数据
+	//现已更改，不使用这里的这个旧数据了，用外置的json文件
+	/*
     var mind = {
-		/* 元数据，定义思维导图的名称、作者、版本等信息 */
+		//元数据，定义思维导图的名称、作者、版本等信息
 		"meta":{
 			"name":"jsMind-demo-tree",
 			"author":"hizzgdev@163.com",
 			"version":"0.2"
 		},
-		/* 数据格式声明 */
+		//数据格式声明
 		"format":"node_tree",
-		/* 数据内容 */
+		//数据内容
 		"data":{"id":"root","topic":"jsMind","children":[
 			{"id":"easy","topic":"Easy","direction":"left","expanded":false,"children":[
 				{"id":"easy1","topic":"Easy to show"},
@@ -104,6 +107,8 @@
 			]}
 		]}
 	};
+	*/
+	//现已更改，不使用这里的这个旧数据了
 	//上面是数据，下面是要执行的具体操作
 	display();
 	addclick();
